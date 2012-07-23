@@ -1,0 +1,5 @@
+mongo:
+  port: 10081
+  host: staff.mongohq.com
+  user: jesse
+  password: password
