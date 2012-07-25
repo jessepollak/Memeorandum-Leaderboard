@@ -1,5 +1,5 @@
-var palette = new Rickshaw.Color.Palette();
-var series = []
+var palette = new Rickshaw.Color.Palette(),
+    series = []
 $.get('names.json', function(d) {
   d.forEach(function(s) {
     series.push({
@@ -7,9 +7,7 @@ $.get('names.json', function(d) {
       color: palette.color(s)
     })
   })
-  
   var ajaxGraph = new Rickshaw.Graph.Ajax( {
-
   	element: document.getElementById("graph"),
   	width: 800,
   	height: 500,
@@ -24,7 +22,9 @@ $.get('names.json', function(d) {
   	  var graph = transport.graph;
   	  var detail = new Rickshaw.Graph.HoverDetail({ 
   	    graph: graph,
-  	    xFormatter: function(x) { return new Date(x * 60 * 60 * 24 * 1000).format("ddd mmmm d, yyyy") },
+  	    xFormatter: function(x) { 
+  	      return new Date(x * 60 * 60 * 24 * 1000).format("ddd mmmm d, yyyy") 
+  	    },
   	    yFormatter: function(y) { return (y*100).toFixed(2) + "%"}
   	  });
   	  var legend = new Rickshaw.Graph.Legend({
@@ -43,12 +43,9 @@ $.get('names.json', function(d) {
           graph: graph,
           tickFormat: function(y) { return (y*100).toFixed(2) + "%"}
       });
-
       yAxis.render();
   	}
   } );
-  
-
 }, 'json');
 
 
